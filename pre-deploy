@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+import os
+from sys import argv
+
+_, aws_access_key_id, aws_secret_access_key = argv
+home_path = os.path.expanduser('~')
+file_name = home_path + '/.aws/credentials'
+directory = os.path.dirname(file_name)
+profile_name = 'claudia'
+
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
+file = open(file_name, 'w')
+file.write('[' + profile_name + ']' + "\n")
+file.write('aws_access_key_id = ' + aws_access_key_id + "\n")
+file.write('aws_secret_access_key = ' + aws_secret_access_key + "\n")

@@ -1,0 +1,11 @@
+image: node:6.9.4
+
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - chmod +x pre-deploy
+            - ./pre-deploy $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY
+            - npm i
+            - npm run deploy
